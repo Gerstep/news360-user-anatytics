@@ -1,0 +1,17 @@
+<h3>DAU & Session stats</h3>
+
+<%@response.each do |app|%>
+<h1><%=app.first%></h1>
+<table class="table table-condensed">
+	<tr class="active">
+		<td>Metric name</td>
+		<td>Value</td>
+	</tr>
+<%@response[app.first].each do |metric|%>
+	<tr>
+		<td><b><%=metric['metric_name']%></b></td>
+		<td><%=metric['value']%></td>
+	</tr>
+<%end%>
+</table>
+<%end%>

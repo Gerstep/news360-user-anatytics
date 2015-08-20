@@ -1,0 +1,25 @@
+<h3>Showing events stating <%=@daterange['first']%> to <%=@daterange['last']%></h3>
+
+<%@response.each do |app|%>
+<h1><%=app.first%></h1>
+<table class="table table-condensed">
+	<tr class="active">
+		<td>Event Name</td>
+		<td>Count</td>
+		<td>Users</td>
+		<td>Sessions</td>
+	</tr>
+<%@response[app.first]['event'].each do |event|
+	if event['@eventName'] == "Swipe" || event['@eventName'] == "Saved" || event['@eventName'] == "Search" || event['@eventName'] == "Article opened" || event['@eventName'] == "Mute" || event['@eventName'] == "Build News360" || event['@eventName'] == "Personalize In Intro" || event['@eventName'] == "Sign in" || event['@eventName'] == "Like" || event['@eventName'] == "Personalize" || event['@eventName'] == "Share" || event['@eventName'] == "Saved" || event['@eventName'] == "Shared" || event['@eventName'] == "Added from Explore" || event['@eventName'] == "Added from Intro" || event['@eventName'] == "Added From Intro"
+	%>
+	<tr>
+		<td><b><%=event['@eventName']%></b></td>
+		<td><%=event['@totalCount']%></td>
+		<td><%=event['@usersLastMonth']%></td>
+		<td><%=event['@totalSessions']%></td>
+	</tr>
+<%
+end
+end%>
+</table>
+<%end%>

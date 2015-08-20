@@ -1,0 +1,27 @@
+<h3>Showing metrics stating <%=@daterange['first']%> to <%=@daterange['last']%></h3>
+
+<%@response.each do |app|%>
+<h1><%=app.first%></h1>
+<table class="table table-condensed">
+	<tr class="active">
+		<td>Metric name</td>
+		<td>Date</td>
+		<td>Value</td>
+	</tr>
+<%@response[app.first].each_cons(2) do |first, metric|
+	if metric['metric_name'] == first['metric_name']%>
+	<tr>
+		<td></td>
+		<td><%=metric['date']%></td>
+		<td><%=metric['value']%></td>
+	</tr>
+	<%else%>
+	<tr>
+		<td><b><%=metric['metric_name']%></b></td>
+		<td><%=metric['date']%></td>
+		<td><%=metric['value']%></td>
+	</tr>
+<%end
+end%>
+</table>
+<%end%>

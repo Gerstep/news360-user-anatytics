@@ -1,0 +1,19 @@
+<%= form_tag('/events') do %>
+<p/>
+Show Events
+<p/>
+<%= select_date(Date.current, :order => [:month, :day, :year], :prefix=>'from_date')     %>
+increment
+<%= select_tag 'increment', options_for_select([ "Month", "TwoWeeks", "Week" ], "Month")%>
+<%= submit_tag "Show stats" %>
+<% end %>
+
+<%= form_tag('/metrics') do %>
+<p/>
+Show Metrics
+<p/>
+<%= select_date(Date.current, :order => [:month, :day, :year], :prefix=>'from_date')     %>
+increment
+<%= select_tag 'increment', options_for_select([ "Month", "TwoWeeks", "Week" ], "Month")%>
+<%= submit_tag "Show stats" %>
+<% end %>
